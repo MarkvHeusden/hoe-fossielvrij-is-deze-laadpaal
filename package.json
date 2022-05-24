@@ -1,0 +1,33 @@
+{
+    "name": "hoe-fossielvrij-is-deze-laadpaal",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MarkvHeusden/hoe-fossielvrij-is-deze-laadpaal.git"
+    },
+    "dependencies": {
+        "ejs": "^3.0.2",
+        "express": "^4.17.3"
+    },
+    "devDependencies": {
+        "eslint": "^8.11.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "nodemon": "^2.0.15",
+        "prettier": "^2.6.0"
+    },
+    "type": "module",
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/MarkvHeusden/hoe-fossielvrij-is-deze-laadpaal/issues"
+    },
+    "homepage": "https://github.com/MarkvHeusden/hoe-fossielvrij-is-deze-laadpaal#readme"
+}
