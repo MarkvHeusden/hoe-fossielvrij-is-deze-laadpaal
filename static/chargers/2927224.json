@@ -1,0 +1,58 @@
+{
+	"uid": 1,
+	"externalId": "01001188",
+	"coordinates": {
+		"latitude": 52.12352,
+		"longitude": 5.042999
+	},
+	"operatorName": "NewMotion",
+	"address": {
+		"streetAndNumber": "Maarssenbroek 33",
+		"postalCode": "3542 DM",
+		"city": "Utrecht",
+		"country": "NLD"
+	},
+	"accessibility": {
+		"status": "Unspecified",
+		"remark": ""
+	},
+	"evses": [
+		{
+			"uid": 1,
+			"externalId": "01001188_1",
+			"evseId": "NL*TNM*E01001188*0",
+			"status": "Available",
+			"connectors": [
+				{
+					"uid": 1,
+					"externalId": "0",
+					"connectorType": "Type2",
+					"electricalProperties": {
+						"powerType": "AC1Phase",
+						"voltage": 230,
+						"amperage": 16,
+						"maxElectricPower": 3.7
+					},
+					"fixedCable": false,
+					"tariff": {
+						"startFee": 0.0,
+						"perMinute": 0.0,
+						"perKWh": 0.37,
+						"currency": "EUR",
+						"updated": "2021-07-06T10:44:24Z",
+						"updatedBy": "TariffService",
+						"structure": "Default"
+					},
+					"updated": "2022-02-15T14:31:19Z",
+					"updatedBy": "Feed"
+				}
+			],
+			"authorizationMethods": ["RFIDToken"],
+			"physicalReference": "NL*TNM*E01001188*0",
+			"updated": "2021-09-28T08:42:35Z"
+		}
+	],
+	"updated": "2022-02-15T14:31:19Z",
+	"operatorComment": "asd",
+	"locationType": "UNKNOWN"
+}
