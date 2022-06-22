@@ -46,27 +46,23 @@ De applicatie is gebouwd met [Sveltekit](https://kit.svelte.dev/), waar we voor 
 - Die coördinaten kunnen we vervolgens weer gebruiken in de Shell [B2B EV Locations API](https://developer.shell.com/api-catalog/v1.0.1/b2b-ev-locations), door de coördinaten in te vullen in de fetch krijg je een lijst met markers terug. De `15` op het eind staat voor het zoom level (1: World, 5: Landmass/continent, 10: City, 15: Streets, 20: Buildings).
 
 - ```js
-  `https://ui-map.shellrecharge.com/api/map/v2/markers/${
-    userLocation.longitude - 0.05
-  }/${userLocation.longitude + 0.05}/${userLocation.latitude - 0.05}/${
-    userLocation.latitude + 0.05
-  }/15`;
+  `https://ui-map.shellrecharge.com/api/map/v2/markers/${userLocation.longitude - 0.05}/${userLocation.longitude + 0.05}/${userLocation.latitude - 0.05}/${userLocation.latitude + 0.05}/15`;
   ```
 
 - Het was alleen niet mogelijk om informatie per laadpaal op te halen aan de hand van een uuid, hiervoor is een API key nodig. Wel kan je aan de hand van [Reverse Geocoding](https://docs.mapbox.com/api/search/geocoding/) van Mapbox een coordinaten omzetten in een adres, dit hebben we gebruikt voor de laadpalen in de buurt.
 
 - ```js
   const reverseGeocoding = async (data) => {
-    const newData = await data.map(async (cs) => {
-      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${cs.coordinates.longitude},${cs.coordinates.latitude}.json?access_token=${process.env.VITE_NAME}`;
-      const response = await fetch(url);
-      const geocodingData = await response.json();
+  	const newData = await data.map(async (cs) => {
+  		const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${cs.coordinates.longitude},${cs.coordinates.latitude}.json?access_token=${process.env.VITE_NAME}`;
+  		const response = await fetch(url);
+  		const geocodingData = await response.json();
 
-      cs.name = `${geocodingData.features[0].text} ${geocodingData.features[0].address}`;
-      return cs;
-    });
+  		cs.name = `${geocodingData.features[0].text} ${geocodingData.features[0].address}`;
+  		return cs;
+  	});
 
-    return Promise.all(newData);
+  	return Promise.all(newData);
   };
   ```
 
@@ -92,9 +88,3 @@ Dingen waar we (nog) niet aan toegekomen zijn op basis van MoScoW.
 - [ ] Push notificaties met een Service Worker om de gebruiker een bericht te sturen met wat de beste tijd is om te laden, voor een prototype is dit alleen niet helemaal interessant en werkt ook alles behalve fijn om mee te testen.
 - [ ] Elementen in components zetten, we kregen dit niet helemaal aan de praat met het fetchen, maar zo kan de data ook meegenomen worden naar het vergelijkscherm om dat actueel te maken.
 - [ ] Optie om locaties te bookmarken, om locaties die je vaak bezoekt makkelijk terug te vinden of een locatie die je binnenkort wil bezoeken.
-
-## Licentie
-
-![GNU GPL V3](https://www.gnu.org/graphics/gplv3-127x51.png)
-
-This work is licensed under [GNU GPLv3](./LICENSE).
