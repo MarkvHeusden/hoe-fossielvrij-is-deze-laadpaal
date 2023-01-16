@@ -12,10 +12,11 @@
 		const nearbyChargers = await nearbyChargersRes.json();
 		const top5Chargers = nearbyChargers.slice(0, 5);
 
-		const providerRes = await fetch('/api/providers.json');
-		const providers = await providerRes.json();
+		// const providerRes = await fetch('/api/providers.json');
+		// const providers = await providerRes.json();
 
-		const co2 = charger.operatorName === 'Vattenfall' ? Math.floor((providers[0][1][0]._value * 50) / 100) / 10 : Math.floor((providers[10][1][0]._value * 50) / 100) / 10;
+		// const co2 = charger.operatorName === 'Vattenfall' ? Math.floor((providers[0][1][0]._value * 50) / 100) / 10 : Math.floor((providers[10][1][0]._value * 50) / 100) / 10;
+		const co2 = 234;
 		const facts = [
 			{
 				co2g: 5000,
@@ -40,18 +41,19 @@
 		];
 		const randomFact = facts[Math.floor(Math.random() * facts.length)];
 
-		const forecastRes = await fetch('/api/forecast.json');
-		const forecast = await forecastRes.json();
+		// const forecastRes = await fetch('/api/forecast.json');
+		// const forecast = await forecastRes.json();
 
 		let totalEnergy = 0;
-		forecast.forEach((energy) => {
-			totalEnergy += energy[1][0]._value;
-		});
+		// forecast.forEach((energy) => {
+		// 	totalEnergy += energy[1][0]._value;
+		// });
 
-		const dirtyEnergy = forecast[1][1][0]._value + forecast[2][1][0]._value + forecast[5][1][0]._value;
-		const sustainableEnergy = Math.floor((dirtyEnergy / totalEnergy) * 100);
+		// const dirtyEnergy = forecast[1][1][0]._value + forecast[2][1][0]._value + forecast[5][1][0]._value;
+		// const sustainableEnergy = Math.floor((dirtyEnergy / totalEnergy) * 100);
+		const sustainableEnergy = 43;
 
-		if (chargerRes.ok && nearbyChargersRes.ok && providerRes.ok) {
+		if (chargerRes.ok && nearbyChargersRes.ok) {
 			return {
 				props: {
 					charger,
